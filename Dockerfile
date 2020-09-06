@@ -11,10 +11,10 @@ FROM alpine:3.12
 WORKDIR /usr/bin/
 
 COPY --from=build /tmp/build/juroku/stream/server/juroku-server /usr/bin
-RUN apk add libgomp ffmpeg youtube-dl \
+RUN apk add libgomp ffmpeg youtube-dl bash \
     && addgroup -g 1000 -S juroku \
     && adduser -u 1000 -S juroku -G juroku
 
 EXPOSE 9999
 USER juroku
-CMD ["juroku-server"]
+CMD ["bash"]
